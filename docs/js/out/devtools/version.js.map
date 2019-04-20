@@ -1,1 +1,0 @@
-{"version":3,"file":"\/Users\/kusanagi\/My\/Project\/topics\/docs\/js\/out\/devtools\/version.js","sources":["version.cljs?rel=1555764105432"],"lineCount":9,"mappings":";AAAA;;AAGA,AAAKA,mCAAgB;AAErB,uCAAA,vCAAMC;AAAN,AACED","names":["devtools.version\/current-version","devtools.version\/get-current-version"]}

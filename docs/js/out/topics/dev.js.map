@@ -1,1 +1,0 @@
-{"version":3,"file":"\/Users\/kusanagi\/My\/Project\/topics\/docs\/js\/out\/topics\/dev.js","sources":["dev.cljs?rel=1555764111237"],"lineCount":10,"mappings":";AAAA;;;;AAMA,AAACA;AAED,AAACC;AAED,AAACC","names":["cljs.core\/enable-console-print!","devtools.core\/install!","topics.core\/init!"]}

@@ -36,7 +36,7 @@
   (.log js/console (str "error: " response)))
 
 (defn request-json[]
-  (GET "/topics.json" {:handler  success-handler
+  (GET "./topics.json" {:handler  success-handler
                        :error-handler error-handler
                        }))
 
