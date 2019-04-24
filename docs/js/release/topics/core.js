@@ -4,33 +4,40 @@ goog.require('cljs.core');
 goog.require('cljs.core.constants');
 goog.require('reagent.core');
 goog.require('ajax.core');
-goog.require('garden.core');
-garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentVector(null, 8, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$content,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$display,cljs.core.cst$sym$flex,cljs.core.cst$kw$flex_DASH_direction,cljs.core.cst$sym$column,cljs.core.cst$kw$justify_DASH_content,cljs.core.cst$sym$center,cljs.core.cst$kw$align_DASH_items,cljs.core.cst$sym$center], null),cljs.core.cst$kw$title,cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$topics,cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$next_DASH_button,cljs.core.PersistentArrayMap.EMPTY], null)], 0));
 topics.core.state = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$topics,cljs.core.PersistentVector.EMPTY,cljs.core.cst$kw$fetch_QMARK_,false,cljs.core.cst$kw$index,(-1)], null));
 topics.core.random_range = (function topics$core$random_range(min,max){
-var G__25616 = cljs.core.rand.cljs$core$IFn$_invoke$arity$1((max - min));
-var G__25617 = (min - (1));
-return Math.ceil(G__25616,G__25617);
+var G__23698 = cljs.core.rand.cljs$core$IFn$_invoke$arity$1((max - min));
+var G__23699 = (min - (1));
+return Math.floor(G__23698,G__23699);
 });
 topics.core.random_index = (function topics$core$random_index(){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(topics.core.state,cljs.core.assoc,cljs.core.cst$kw$index,topics.core.random_range((0),cljs.core.count(cljs.core.cst$kw$topics.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(topics.core.state)))));
 });
-topics.core.success_handler = (function topics$core$success_handler(response){
-var data = cljs.core.clj__GT_js(response);
-cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(topics.core.state,cljs.core.assoc,cljs.core.cst$kw$topics,data.topics);
+topics.core.success_handler = (function topics$core$success_handler(p__23700){
+var vec__23701 = p__23700;
+var ok = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__23701,(0),null);
+var response = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__23701,(1),null);
+if(cljs.core.truth_(ok)){
+var data = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$variadic(response,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$keywordize_DASH_keys,true], 0));
+console.log(data);
+
+cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(topics.core.state,cljs.core.assoc,cljs.core.cst$kw$topics,cljs.core.cst$kw$topics.cljs$core$IFn$_invoke$arity$1(data));
 
 cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(topics.core.state,cljs.core.assoc,cljs.core.cst$kw$fetch_QMARK_,true);
 
 return topics.core.random_index();
-});
-topics.core.error_handler = (function topics$core$error_handler(response){
+} else {
 return console.log(["error: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(response)].join(''));
+}
 });
 topics.core.request_json = (function topics$core$request_json(){
-return ajax.core.GET.cljs$core$IFn$_invoke$arity$variadic("./topics.json",cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$handler,topics.core.success_handler,cljs.core.cst$kw$error_DASH_handler,topics.core.error_handler], null)], 0));
+var G__23704 = new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$uri,"./topics.json",cljs.core.cst$kw$method,cljs.core.cst$kw$get,cljs.core.cst$kw$handler,topics.core.success_handler,cljs.core.cst$kw$format,(ajax.core.url_request_format.cljs$core$IFn$_invoke$arity$0 ? ajax.core.url_request_format.cljs$core$IFn$_invoke$arity$0() : ajax.core.url_request_format.call(null)),cljs.core.cst$kw$response_DASH_format,(function (){var G__23705 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$keywords_QMARK_,true], null);
+return (ajax.core.json_response_format.cljs$core$IFn$_invoke$arity$1 ? ajax.core.json_response_format.cljs$core$IFn$_invoke$arity$1(G__23705) : ajax.core.json_response_format.call(null,G__23705));
+})()], null);
+return (ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1 ? ajax.core.ajax_request.cljs$core$IFn$_invoke$arity$1(G__23704) : ajax.core.ajax_request.call(null,G__23704));
 });
 topics.core.home_page = (function topics$core$home_page(){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$content,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h2$title,"\u3042\u306A\u305F\u306B\u6700\u9AD8\u306E\u8CEA\u554F\u3092\u5DEE\u3057\u4E0A\u3052\u307E\u3057\u3087\u3046... "], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$topics,(cljs.core.truth_((function (){var and__4120__auto__ = cljs.core.cst$kw$fetch_QMARK_.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(topics.core.state));
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$content,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$h3$title,"\u3042\u306A\u305F\u306B\u6700\u9AD8\u306E\u8CEA\u554F\u3092\u5DEE\u3057\u4E0A\u3052\u307E\u3057\u3087\u3046... "], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div$topics,(cljs.core.truth_((function (){var and__4120__auto__ = cljs.core.cst$kw$fetch_QMARK_.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(topics.core.state));
 if(cljs.core.truth_(and__4120__auto__)){
 return (!(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2((-1),cljs.core.cst$kw$index.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(topics.core.state)))));
 } else {
